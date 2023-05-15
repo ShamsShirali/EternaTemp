@@ -1,6 +1,6 @@
 ﻿using EternaTempl.DataAccessLayer;
 using EternaTempl.ViewModels.Home;
-using EternaTempl.ViewModels.Service;
+using EternaTempl.ViewModels.ServiceViewM;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

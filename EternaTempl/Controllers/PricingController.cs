@@ -1,6 +1,7 @@
 ﻿using EternaTempl.DataAccessLayer;
-using EternaTempl.ViewModels.Pricing;
-using EternaTempl.ViewModels.Service;
+using EternaTempl.Models;
+using EternaTempl.ViewModels.PricingViewM;
+using EternaTempl.ViewModels.ServiceViewM;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,12 +18,16 @@ namespace EternaTempl.Controllers
 
         public async Task<IActionResult> Index()
         {
-            PricingVM vm = new PricingVM
+            List<Pricing> pricings = await _context.Pricings.Include(p => p.PricingServices.Where(ps => ps.IsDeleted == false)).Where(c => c.IsDeleted == false).ToListAsync();
+            List<Service> services = await _context.Services.Where(s => s.IsDeleted == false).ToListAsync();
+
+            PricingVM pricingvm = new PricingVM
             {
-                PricingServices = await _context.PricingServices.Include(c => c.Service).Include(c => c.Pricing).Where(c => c.IsDeleted == false).ToListAsync(),
+                Pricings = pricings,
+                Services = services
             };
 
-            return View(vm);
+            return View(pricingvm);
         }
     }
 }

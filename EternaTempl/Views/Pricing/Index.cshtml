@@ -1,9 +1,5 @@
 ﻿@model PricingVM
 
-@{
-    int count = 0;
-}
-
 <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
@@ -24,21 +20,17 @@
 
             <div class="row no-gutters">
 
-                @foreach(PricingService pricingService in Model.PricingServices){
-                    <div class="col-lg-4 box @(count==1 ? "featured" : "")">
-                    <h3>@pricingService.Pricing.Name</h3>
-                    <h4>$@pricingService.Pricing.Price<span>per month</span></h4>
+                @foreach(Pricing pricing in Model.Pricings){
+                    <div class="col-lg-4 box @(pricing.IsFeatured==true? " featured":"")">
+                    <h3>@pricing.Name</h3>
+                    <h4>$@pricing.Price<span>per month</span></h4>
                     <ul>
-                        <li><i class="bx bx-check"></i>@pricingService.Service.Name</li>
-                            <li><i class="bx bx-check"></i>>@pricingService.Service.Name</li>
-                            <li><i class="bx bx-check"></i> @pricingService.Service.Name</li>
-                            <li class="na"><i class="@(count==1 ? "bx bx-x" : "bx bx-chec")"></i> <span>@pricingService.Service.Name</span></li>
-                            <li class="na"><i class="@(count==1 ? "bx bx-x" : "bx bx-chec")"></i> <span>@pricingService.Service.Name</span></li>
+                            @foreach (Service service in Model.Services){
+                                <li class="@(pricing.PricingServices.Any(ps=>ps.ServiceId==service.Id)==true? "":"na")"><i class="@(pricing.PricingServices.Any(ps=>ps.ServiceId==service.Id)==true? "bx bx-check":"bx bx-x")"></i> <span>@service.Name</span></li>
+                            }
                     </ul>
                     <a href="#" class="buy-btn">Buy Now</a>
                 </div>
-
-                count++;
                 }
             </div>
 

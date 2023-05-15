@@ -1,5 +1,5 @@
 ﻿using EternaTempl.DataAccessLayer;
-using EternaTempl.ViewModels.Service;
+using EternaTempl.ViewModels.ServiceViewM;
 using EternaTempl.ViewModels.Team;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

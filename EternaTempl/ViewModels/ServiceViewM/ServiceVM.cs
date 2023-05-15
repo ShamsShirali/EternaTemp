@@ -1,6 +1,6 @@
 ﻿using EternaTempl.Models;
 
-namespace EternaTempl.ViewModels.Service
+namespace EternaTempl.ViewModels.ServiceViewM
 {
     public class ServiceVM
     {
