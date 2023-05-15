@@ -1,0 +1,59 @@
+﻿@model TeamVM
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li>Team</li>
+            </ol>
+            <h2>Team</h2>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team">
+        <div class="container">
+
+            <div class="row">
+
+                @foreach(Trainer trainer in Model.Trainers){
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="member">
+                        <img src="assets/img/team/@trainer.Image" alt="">
+                        <h4>@trainer.Name @trainer.Surname</h4>
+                        <span>@trainer.Category.Name</span>
+                        <p>@trainer.Description</p>
+                        <div class="social">
+                                @if (trainer.TwitterUrl != null)
+                                {
+                                    <a href="@trainer.TwitterUrl"><i class="bi bi-twitter"></i></a>
+                                }
+
+                                @if (trainer.FacebookUrl != null)
+                                {
+                                    <a href="@trainer.FacebookUrl"><i class="bi bi-facebook"></i></a>
+                                }
+
+                                @if (trainer.InstagramUrl != null)
+                                {
+                                    <a href="@trainer.InstagramUrl"><i class="bi bi-instagram"></i></a>
+                                }
+
+                                @if (trainer.LinkedinUrl != null)
+                                {
+                                    <a href="@trainer.LinkedinUrl"><i class="bi bi-linkedin"></i></a>
+                                }
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+
+        </div>
+    </section><!-- End Team Section -->
+
+</main><!-- End #main -->
